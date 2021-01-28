@@ -27,12 +27,12 @@
                     <div class="nav-wrapper">
                         <form>
                           <div class="input-field">
-                            <input type="text" class="search" placeholder="Enter your city...">
+                            <input type="text" class="search" id="search-input" placeholder="Enter your city...">
                           </div>
                         </form>
                       </div>
                     <!-- Search button -->
-                    <a class="waves-effect waves-light btn">Search</a>
+                    <a id="search-button" class="waves-effect waves-light btn">Search</a>
                 </row>
                     <!-- Popular Cities List -->
                 <row class="popular-cities">
@@ -53,12 +53,12 @@
                     <div class="col offest-sm6" id="current-forecast-col">
                         <ul class="collection with-header">
                             <li class="collection-header">
-                                <h4>City Name</h4>
+                                <h4 id="name">City Name</h4>
                             </li>
-                            <li class="collection-item">Temperature: <span id="temp">69</span></li>
-                            <li class="collection-item">Humidity: <span id="hum">So wet baby</span></li>
-                            <li class="collection-item">Wind Speed: <span id="wind">Hella Fast</span></li>
-                            <li class="collection-item">UV Index: <span id="uv">420</span></li>
+                            <li class="collection-item">Temperature: <span id="temp">70</span> &deg F</li>
+                            <li class="collection-item">Humidity: <span id="hum">80</span> %</li>
+                            <li class="collection-item">Wind Speed: <span id="wind">10</span> mph</li>
+                            <li class="collection-item">UV Index: <span id="uv">9.8</span></li>
                         </ul>
                     </div>
                 </div>
@@ -66,27 +66,42 @@
                 <div class="row" id="5-day">
                     <div class="col ">
                         <div class="card-panel">
-                            <span class="">Card 1</span>
+                            <p id="date-card-1" class="">Date</p>
+                            <img src="http://placehold.it/30X30" alt="First day weather icon." id="img-card-1">
+                            <p>Temp: <span id="temp-card-1">40</span> &degF</p>
+                            <p>Humidity: <span id="hum-card-1">99</span> %</p>
                         </div>
                     </div>
                     <div class="col">
                         <div class="card-panel">
-                            <span class="">Card 2</span>
+                            <p id="date-card-2" class="">Date</p>
+                            <img src="http://placehold.it/30X30" alt="Second day weather icon." id="img-card-2">
+                            <p>Temp: <span id="temp-card-2">40</span> &degF</p>
+                            <p>Humidity: <span id="hum-card-2">99</span> %</p>
                         </div>
                     </div>
                     <div class="col">
                         <div class="card-panel">
-                            <span class="">Card 3</span>
+                            <p id="date-card-3" class="">Date</p>
+                            <img src="http://placehold.it/30X30" alt="Third day weather icon." id="img-card-3">
+                            <p>Temp: <span id="temp-card-3">40</span> &degF</p>
+                            <p>Humidity: <span id="hum-card-3">99</span> %</p>
                         </div>
                     </div>
                     <div class="col">
                         <div class="card-panel">
-                            <span class="">Card 4</span>
+                            <p id="date-card-4" class="">Date</p>
+                            <img src="http://placehold.it/30X30" alt="Fourth day weather icon." id="img-card-4">
+                            <p>Temp: <span id="temp-card-4">40</span> &degF</p>
+                            <p>Humidity: <span id="hum-card-4">99</span> %</p>
                         </div>
                     </div>
                     <div class="col">
                         <div class="card-panel">
-                            <span class="">Card 5</span>
+                            <p id="date-card-5" class="">Date</p>
+                            <img src="http://placehold.it/30X30" alt="Fifth day weather icon." id="img-card-5">
+                            <p>Temp: <span id="temp-card-5">40</span> &degF</p>
+                            <p>Humidity: <span id="hum-card-5">99</span> %</p>
                         </div>
                     </div>
             </section>
@@ -94,6 +109,7 @@
     </main>
 
     <!-- JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="./assets/script.js"></script>
 </body>
