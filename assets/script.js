@@ -1,10 +1,3 @@
-// Define global variables up here
-
-
-
-// Use this filter to change all letters in string to uppercase if needed.
-// searchInput.value.toUppercase();
-
 
 // fetch requests
 // create fetch requests that get weather info from open weather and populate them into their respective HTML areas
