@@ -1,12 +1,5 @@
-// Define global variables up here
 
-
-
-// Use this filter to change all letters in string to uppercase if needed.
-// searchInput.value.toUppercase();
-
-
-// fetch requests
+// Search Function Start
 // create fetch requests that get weather info from open weather and populate them into their respective HTML areas
 function search(searchTerm) {
 
@@ -44,26 +37,50 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&units=imp
         return response.json();
     })
     .then(function(data){
+        // create a new array of only data objects for the 12:00:00 time block
         let fiveDayArray = data.list.filter(day => day.dt_txt.includes('12:00:00'));
-        
+        // itirate over length of fiveDayArray and pass in values for each element of the card
         for(let i = 0; i < fiveDayArray.length; i++){
+        // format date for use in card
         let dateCard1 = new Date(fiveDayArray[i].dt_txt).toLocaleString().split(',')[0];
+        // pass date to card
         document.getElementById(`date-card-${i}`).innerHTML = dateCard1;
         let iconId = fiveDayArray[i].weather[0].icon;
+        // pass in icon
         document.getElementById(`img-card-${i}`).setAttribute("src", `http://openweathermap.org/img/wn/${iconId}@2x.png`);
+        // pass in temp
         document.getElementById(`temp-card-${i}`).innerHTML =  Math.floor(fiveDayArray[i].main.temp);
+        // pass in hum
         document.getElementById(`hum-card-${i}`).innerHTML = fiveDayArray[i].main.humidity;
         }
-
     })
 
     
 })
 
+localStorage.setItem("last-search", searchTerm);
 // end search function
 }
 
+// local storage saves last search so that location is presented when the page is reloaded.  Hardcode a popular city to present on load by setting an intial value for the search term and then replace that with user's input.
 
+// // On Load Function Start
+// function onLoad(){
+//     if (localStorage.getItem("last-search") === undefined){
+//         searchTerm = "los angeles"
+//         search(searchTerm);
+//     } else {
+//     localStorage.getItem("last-search").value = searchTerm;
+//     console.log(searchTerm);
+//     search(searchTerm);
+//     }
+// }
+
+// onLoad();
+
+
+
+// Click Handlers Start
 
 // search button engages the fetch requests and clears text from search input
 document.getElementById('search-button').addEventListener("click", function(){
@@ -111,4 +128,3 @@ document.getElementById('pop-cit-4').addEventListener("click", function(){
     search(searchTerm);
 });
 
-// local storage saves last search so that location is presented when the page is reloaded.  Hardcode a popular city to present on load by setting an intial value for the searchh term and then replace that with user's input.
