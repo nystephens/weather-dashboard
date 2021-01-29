@@ -53,7 +53,6 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&units=imp
         document.getElementById(`img-card-${i}`).setAttribute("src", `http://openweathermap.org/img/wn/${iconId}@2x.png`);
         document.getElementById(`temp-card-${i}`).innerHTML =  Math.floor(fiveDayArray[i].main.temp);
         document.getElementById(`hum-card-${i}`).innerHTML = fiveDayArray[i].main.humidity;
-
         }
 
     })
