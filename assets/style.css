@@ -3,3 +3,21 @@
     border-style: dotted;
     border-width: 3px;
 } */
+
+.uvi-good {
+    background-color: rgb(14, 168, 14);
+    padding: 7.5px 10px;
+    border-radius: 5px;
+}
+
+.uvi-mod {
+    background-color: rgb(224, 93, 17);
+    padding: 7.5px 10px;
+    border-radius: 5px;
+}
+
+.uvi-warn {
+    background-color: rgb(212, 14, 14);
+    padding: 7.5px 10px;
+    border-radius: 5px;
+}

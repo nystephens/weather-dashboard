@@ -36,6 +36,22 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&units=imp
         })
         .then(function(data){
         document.getElementById('uv').innerHTML = data.current.uvi;
+
+            console.log(document.getElementById('uv').innerHTML);
+            // if UVI is good then add class .uvi-good, if moderate add .uv-mod, if bad add .uvi-warn
+            if (document.getElementById('uv').innerHTML < 3) {
+                document.getElementById('uv').classList.add("uvi-good");
+                document.getElementById('uv').classList.remove("class", "uvi-mod");
+                document.getElementById('uv').classList.remove("class", "uvi-warn");
+            } else if (document.getElementById('uv').innerHTML >= 3 && document.getElementById('uv').innerHTML <= 6 ) {
+                document.getElementById('uv').classList.add("class", "uvi-mod");
+                document.getElementById('uv').classList.remove("class", "uvi-good");
+                document.getElementById('uv').classList.remove("class", "uvi-warn");
+            } else {
+                document.getElementById('uv').classList.add("class", "uvi-warn");
+                document.getElementById('uv').classList.remove("class", "uvi-good");
+                document.getElementById('uv').classList.remove("class", "uvi-mod");
+            }
         })
 
     // fetch results for the 5 day forecast cards
@@ -59,6 +75,7 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&units=imp
 
     
 })
+
 
 // end search function
 }
