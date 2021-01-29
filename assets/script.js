@@ -77,6 +77,39 @@ document.getElementById('search-button').addEventListener("click", function(){
 // look up event listeners for UL of popular search terms.  callback search with parameter of text in list link 
 
 // popular cities list takes the name of the clicked city and enters it as a search term, then calls the search function for that city.
+document.getElementById('pop-cit-0').addEventListener("click", function(){
+    let searchTerm = document.getElementById('pop-cit-0').textContent;
+    console.log(searchTerm);
+    document.getElementById('search-input').value = searchTerm;
+    search(searchTerm);
+});
 
+document.getElementById('pop-cit-1').addEventListener("click", function(){
+    let searchTerm = document.getElementById('pop-cit-1').textContent;
+    console.log(searchTerm);
+    document.getElementById('search-input').value = searchTerm;
+    search(searchTerm);
+});
+
+document.getElementById('pop-cit-2').addEventListener("click", function(){
+    let searchTerm = document.getElementById('pop-cit-2').textContent;
+    console.log(searchTerm);
+    document.getElementById('search-input').value = searchTerm;
+    search(searchTerm);
+});
+
+document.getElementById('pop-cit-3').addEventListener("click", function(){
+    let searchTerm = document.getElementById('pop-cit-3').textContent;
+    console.log(searchTerm);
+    document.getElementById('search-input').value = searchTerm;
+    search(searchTerm);
+});
+
+document.getElementById('pop-cit-4').addEventListener("click", function(){
+    let searchTerm = document.getElementById('pop-cit-4').textContent;
+    console.log(searchTerm);
+    document.getElementById('search-input').value = searchTerm;
+    search(searchTerm);
+});
 
 // local storage saves last search so that location is presented when the page is reloaded.  Hardcode a popular city to present on load by setting an intial value for the searchh term and then replace that with user's input.
