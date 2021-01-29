@@ -29,6 +29,22 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&units=imp
         })
         .then(function(data){
         document.getElementById('uv').innerHTML = data.current.uvi;
+
+            console.log(document.getElementById('uv').innerHTML);
+            // if UVI is good then add class .uvi-good, if moderate add .uv-mod, if bad add .uvi-warn
+            if (document.getElementById('uv').innerHTML < 3) {
+                document.getElementById('uv').classList.add("uvi-good");
+                document.getElementById('uv').classList.remove("class", "uvi-mod");
+                document.getElementById('uv').classList.remove("class", "uvi-warn");
+            } else if (document.getElementById('uv').innerHTML >= 3 && document.getElementById('uv').innerHTML <= 6 ) {
+                document.getElementById('uv').classList.add("class", "uvi-mod");
+                document.getElementById('uv').classList.remove("class", "uvi-good");
+                document.getElementById('uv').classList.remove("class", "uvi-warn");
+            } else {
+                document.getElementById('uv').classList.add("class", "uvi-warn");
+                document.getElementById('uv').classList.remove("class", "uvi-good");
+                document.getElementById('uv').classList.remove("class", "uvi-mod");
+            }
         })
 
     // fetch results for the 5 day forecast cards
@@ -58,25 +74,30 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&units=imp
     
 })
 
+// display current date
+let today = new Date();
+document.getElementById('current-date').innerHTML = today.toDateString();
+
+// set last search term as data item
 localStorage.setItem("last-search", searchTerm);
 // end search function
 }
 
 // local storage saves last search so that location is presented when the page is reloaded.  Hardcode a popular city to present on load by setting an intial value for the search term and then replace that with user's input.
 
-// // On Load Function Start
-// function onLoad(){
-//     if (localStorage.getItem("last-search") === undefined){
-//         searchTerm = "los angeles"
-//         search(searchTerm);
-//     } else {
-//     localStorage.getItem("last-search").value = searchTerm;
-//     console.log(searchTerm);
-//     search(searchTerm);
-//     }
-// }
+// On Load Function Start
+function onLoad(){
+    if (localStorage.getItem("last-search") === null){
+        searchTerm = "los angeles";
+        search(searchTerm);
+    } else {
+        searchTerm = localStorage.getItem("last-search");
+        console.log(localStorage.getItem("last-search"));
+        search(searchTerm);
+    }
+}
 
-// onLoad();
+onLoad();
 
 
 
