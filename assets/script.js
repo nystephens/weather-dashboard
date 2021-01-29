@@ -17,6 +17,9 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&units=imp
     document.getElementById('hum').innerHTML = data.main.humidity;
     // pass in wind speed
     document.getElementById('wind').innerHTML = data.wind.speed;
+    // weather icon
+    let currentIcon = data.weather[0].icon;
+    document.getElementById('current-icon').setAttribute("src", `http://openweathermap.org/img/wn/${currentIcon}@2x.png`);
 
     // set variables for lat and long to be used in next call
     let lon = data.coord.lon;
