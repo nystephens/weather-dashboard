@@ -95,7 +95,6 @@ function onLoad(){
         search(searchTerm);
     } else {
         searchTerm = localStorage.getItem("last-search");
-        console.log(localStorage.getItem("last-search"));
         search(searchTerm);
     }
 }
@@ -104,51 +103,61 @@ onLoad();
 
 
 
-// Click Handlers Start
+// Handlers Start
 
 // search button engages the fetch requests and clears text from search input
 document.getElementById('search-button').addEventListener("click", function(){
     let searchInput = document.getElementById("search-input");
     let searchTerm = searchInput.value.toLowerCase().trim();
     search(searchTerm);
+    searchInput.value = "";
     console.log(searchTerm);
 });
+
+// submit search on enter
+let searchInput = document.getElementById("search-input");
+searchInput.addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+     event.preventDefault();
+     document.getElementById('search-button').click();
+    }
+  });
 
 // look up event listeners for UL of popular search terms.  callback search with parameter of text in list link 
 
 // popular cities list takes the name of the clicked city and enters it as a search term, then calls the search function for that city.
 document.getElementById('pop-cit-0').addEventListener("click", function(){
     let searchTerm = document.getElementById('pop-cit-0').textContent;
-    console.log(searchTerm);
     document.getElementById('search-input').value = searchTerm;
     search(searchTerm);
+    searchInput.value = "";
 });
 
 document.getElementById('pop-cit-1').addEventListener("click", function(){
     let searchTerm = document.getElementById('pop-cit-1').textContent;
-    console.log(searchTerm);
     document.getElementById('search-input').value = searchTerm;
     search(searchTerm);
+    searchInput.value = "";
 });
 
 document.getElementById('pop-cit-2').addEventListener("click", function(){
     let searchTerm = document.getElementById('pop-cit-2').textContent;
-    console.log(searchTerm);
     document.getElementById('search-input').value = searchTerm;
     search(searchTerm);
+    searchInput.value = "";
 });
 
 document.getElementById('pop-cit-3').addEventListener("click", function(){
     let searchTerm = document.getElementById('pop-cit-3').textContent;
-    console.log(searchTerm);
     document.getElementById('search-input').value = searchTerm;
     search(searchTerm);
+    searchInput.value = "";
 });
 
 document.getElementById('pop-cit-4').addEventListener("click", function(){
     let searchTerm = document.getElementById('pop-cit-4').textContent;
-    console.log(searchTerm);
     document.getElementById('search-input').value = searchTerm;
     search(searchTerm);
+    searchInput.value = "";
 });
 
