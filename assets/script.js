@@ -20,6 +20,8 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&units=imp
     // weather icon
     let currentIcon = data.weather[0].icon;
     document.getElementById('current-icon').setAttribute("src", `http://openweathermap.org/img/wn/${currentIcon}@2x.png`);
+    // description
+    document.getElementById('description').innerHTML = data.weather[0].description;
 
     // set variables for lat and long to be used in next call
     let lon = data.coord.lon;
