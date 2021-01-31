@@ -77,7 +77,9 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&units=imp
     })
 
     
-})
+}).catch(function(){
+    document.getElementById('name').innerHTML = "City not found!  Please try again.";
+});
 
 // display current date
 let today = new Date();
@@ -85,8 +87,11 @@ document.getElementById('current-date').innerHTML = today.toDateString();
 
 // set last search term as data item
 localStorage.setItem("last-search", searchTerm);
+
 // end search function
 }
+
+
 
 // local storage saves last search so that location is presented when the page is reloaded.  Hardcode a popular city to present on load by setting an intial value for the search term and then replace that with user's input.
 
