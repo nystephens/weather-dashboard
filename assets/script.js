@@ -109,6 +109,23 @@ function onLoad(){
 onLoad();
 
 
+// Save Search History Function
+function saveSearchHistory() {
+    // create DOM element that holds the quick search list
+    let quickSearchList = document.querySelector(".collection");
+    let newSearchTerm = searchInput.value;
+    // create DOM <a> element that holds the last search
+    let searchHistoryEl = document.createElement("a");
+    
+    searchHistoryEl.setAttribute("href", "#!");
+    searchHistoryEl.id = "search-history-el";
+    searchHistoryEl.className = "collection-item";
+    
+    searchHistoryEl.innerHTML = newSearchTerm;
+
+    quickSearchList.appendChild(searchHistoryEl);
+} 
+
 
 // Handlers Start
 
@@ -119,6 +136,7 @@ document.getElementById('search-button').addEventListener("click", function(){
     search(searchTerm);
     searchInput.value = "";
     console.log(searchTerm);
+    saveSearchHistory();
 });
 
 // submit search on enter
