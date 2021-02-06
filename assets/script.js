@@ -1,3 +1,5 @@
+let searchHistArray = JSON.parse(localStorage.getItem("last-search")) || [];
+
 
 // Search Function Start
 // create fetch requests that get weather info from open weather and populate them into their respective HTML areas
@@ -84,9 +86,9 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&units=imp
 // display current date
 let today = new Date();
 document.getElementById('current-date').innerHTML = today.toDateString();
-
+searchHistArray.push(searchTerm);
 // set last search term as data item
-localStorage.setItem("last-search", searchTerm);
+localStorage.setItem("last-search", JSON.stringify(searchHistArray));
 
 // end search function
 }
@@ -102,7 +104,11 @@ function onLoad(){
         search(searchTerm);
     } else {
         searchTerm = localStorage.getItem("last-search");
-        search(searchTerm);
+        search(searchHistArray[0]);
+
+        for (let i = 0; i < searchHistArray.length; i++){
+            saveSearchHistory(searchHistArray[i]);
+        }
     }
 }
 
@@ -110,10 +116,10 @@ onLoad();
 
 
 // Save Search History Function
-function saveSearchHistory() {
+function saveSearchHistory(city) {
     // create DOM element that holds the quick search list
     let quickSearchList = document.querySelector(".collection");
-    let newSearchTerm = searchInput.value;
+    let newSearchTerm = city;
     // create DOM <a> element that holds the last search
     let searchHistoryEl = document.createElement("a");
     
@@ -134,9 +140,9 @@ document.getElementById('search-button').addEventListener("click", function(){
     let searchInput = document.getElementById("search-input");
     let searchTerm = searchInput.value.toLowerCase().trim();
     search(searchTerm);
-    searchInput.value = "";
     console.log(searchTerm);
-    saveSearchHistory();
+    saveSearchHistory(searchInput.value);
+    searchInput.value = "";
 });
 
 // submit search on enter
@@ -186,3 +192,6 @@ document.getElementById('pop-cit-4').addEventListener("click", function(){
     searchInput.value = "";
 });
 
+document.querySelector(".collection").addEventListener("click", "a", function(){
+    console.log(this);
+});
