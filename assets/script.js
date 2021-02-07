@@ -126,11 +126,20 @@ function saveSearchHistory(city) {
     searchHistoryEl.setAttribute("href", "#!");
     // searchHistoryEl.id = "search-history-el-" + searchHistArray.indexOf(searchHistArray[i]);
     searchHistoryEl.className = "collection-item";
-    
+    searchHistoryEl.classList.add("search-hist-el")
     searchHistoryEl.innerHTML = newSearchTerm;
 
     quickSearchList.appendChild(searchHistoryEl);
 } 
+
+
+function deleteSearchHistory(){
+    // for (let i = 0; i < searchHistArray.length; i++){
+    //     quickSearchList.removeChild(searchHistoryEl);
+    // }
+    let searchHist = document.querySelector(".search-hist-el");
+    searchHist.remove();
+}
 
 
 // Handlers Start
@@ -199,6 +208,7 @@ document.getElementById('pop-cit-4').addEventListener("click", function(){
 document.getElementById('delete').addEventListener("click", function(){
     searchHistArray = [];
     localStorage.clear();
+    deleteSearchHistory();
 });
 
 document.addEventListener('DOMContentLoaded', () => {
