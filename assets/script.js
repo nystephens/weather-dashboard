@@ -124,7 +124,7 @@ function saveSearchHistory(city) {
     let searchHistoryEl = document.createElement("a");
     
     searchHistoryEl.setAttribute("href", "#!");
-    searchHistoryEl.id = "search-history-el";
+    // searchHistoryEl.id = "search-history-el-" + searchHistArray.indexOf(searchHistArray[i]);
     searchHistoryEl.className = "collection-item";
     
     searchHistoryEl.innerHTML = newSearchTerm;
@@ -140,7 +140,6 @@ document.getElementById('search-button').addEventListener("click", function(){
     let searchInput = document.getElementById("search-input");
     let searchTerm = searchInput.value.toLowerCase().trim();
     search(searchTerm);
-    console.log(searchTerm);
     saveSearchHistory(searchInput.value);
     searchInput.value = "";
 });
@@ -192,6 +191,18 @@ document.getElementById('pop-cit-4').addEventListener("click", function(){
     searchInput.value = "";
 });
 
-document.querySelector(".collection").addEventListener("click", "a", function(){
-    console.log(this);
+// document.querySelector(".collection-item").addEventListener("click", function(){
+//     console.log("HEllo");
+//     console.log(this);
+// });
+
+document.getElementById('delete').addEventListener("click", function(){
+    searchHistArray = [];
+    localStorage.clear();
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelector(".collection-item").addEventListener('click', () => {
+        console.log(this);
+    });
+  });
