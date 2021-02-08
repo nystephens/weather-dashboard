@@ -86,8 +86,10 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&units=imp
 // display current date
 let today = new Date();
 document.getElementById('current-date').innerHTML = today.toDateString();
-searchHistArray.push(searchTerm);
+
+
 // set last search term as data item
+searchHistArray.push(searchTerm);
 localStorage.setItem("last-search", JSON.stringify(searchHistArray));
 
 // end search function
@@ -102,6 +104,7 @@ function onLoad(){
     if (localStorage.getItem("last-search") === null){
         searchTerm = "los angeles";
         search(searchTerm);
+        localStorage.clear();
     } else {
         searchTerm = localStorage.getItem("last-search");
         search(searchHistArray[0]);
@@ -137,8 +140,9 @@ function deleteSearchHistory(){
     // for (let i = 0; i < searchHistArray.length; i++){
     //     quickSearchList.removeChild(searchHistoryEl);
     // }
-    let searchHist = document.querySelector(".search-hist-el");
-    searchHist.remove();
+    let searchHist = document.querySelector(".collection");
+    searchHist.innerHTML = "";
+    // searchHist.remove();
 }
 
 
@@ -165,45 +169,45 @@ searchInput.addEventListener("keyup", function(event) {
 // look up event listeners for UL of popular search terms.  callback search with parameter of text in list link 
 
 // popular cities list takes the name of the clicked city and enters it as a search term, then calls the search function for that city.
-document.getElementById('pop-cit-0').addEventListener("click", function(){
-    let searchTerm = document.getElementById('pop-cit-0').textContent;
-    document.getElementById('search-input').value = searchTerm;
-    search(searchTerm);
-    searchInput.value = "";
-});
-
-document.getElementById('pop-cit-1').addEventListener("click", function(){
-    let searchTerm = document.getElementById('pop-cit-1').textContent;
-    document.getElementById('search-input').value = searchTerm;
-    search(searchTerm);
-    searchInput.value = "";
-});
-
-document.getElementById('pop-cit-2').addEventListener("click", function(){
-    let searchTerm = document.getElementById('pop-cit-2').textContent;
-    document.getElementById('search-input').value = searchTerm;
-    search(searchTerm);
-    searchInput.value = "";
-});
-
-document.getElementById('pop-cit-3').addEventListener("click", function(){
-    let searchTerm = document.getElementById('pop-cit-3').textContent;
-    document.getElementById('search-input').value = searchTerm;
-    search(searchTerm);
-    searchInput.value = "";
-});
-
-document.getElementById('pop-cit-4').addEventListener("click", function(){
-    let searchTerm = document.getElementById('pop-cit-4').textContent;
-    document.getElementById('search-input').value = searchTerm;
-    search(searchTerm);
-    searchInput.value = "";
-});
-
-// document.querySelector(".collection-item").addEventListener("click", function(){
-//     console.log("HEllo");
-//     console.log(this);
+// document.getElementById('pop-cit-0').addEventListener("click", function(){
+//     let searchTerm = document.getElementById('pop-cit-0').textContent;
+//     document.getElementById('search-input').value = searchTerm;
+//     search(searchTerm);
+//     searchInput.value = "";
 // });
+
+// document.getElementById('pop-cit-1').addEventListener("click", function(){
+//     let searchTerm = document.getElementById('pop-cit-1').textContent;
+//     document.getElementById('search-input').value = searchTerm;
+//     search(searchTerm);
+//     searchInput.value = "";
+// });
+
+// document.getElementById('pop-cit-2').addEventListener("click", function(){
+//     let searchTerm = document.getElementById('pop-cit-2').textContent;
+//     document.getElementById('search-input').value = searchTerm;
+//     search(searchTerm);
+//     searchInput.value = "";
+// });
+
+// document.getElementById('pop-cit-3').addEventListener("click", function(){
+//     let searchTerm = document.getElementById('pop-cit-3').textContent;
+//     document.getElementById('search-input').value = searchTerm;
+//     search(searchTerm);
+//     searchInput.value = "";
+// });
+
+// document.getElementById('pop-cit-4').addEventListener("click", function(){
+//     let searchTerm = document.getElementById('pop-cit-4').textContent;
+//     document.getElementById('search-input').value = searchTerm;
+//     search(searchTerm);
+//     searchInput.value = "";
+// });
+
+document.querySelector(".collection-item").addEventListener("click", function(){
+    console.log("HEllo");
+    console.log(this);
+});
 
 document.getElementById('delete').addEventListener("click", function(){
     searchHistArray = [];
