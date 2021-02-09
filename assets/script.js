@@ -88,8 +88,9 @@ let today = new Date();
 document.getElementById('current-date').innerHTML = today.toDateString();
 
 
-// set last search term as data item
-searchHistArray.push(searchTerm);
+// set last search term as a data item if it is not already present in the array
+if (searchHistArray.includes(searchTerm) === false) searchHistArray.pop(searchTerm);
+// searchHistArray.push(searchTerm);
 localStorage.setItem("last-search", JSON.stringify(searchHistArray));
 
 // end search function
@@ -115,14 +116,21 @@ function onLoad(){
     }
 }
 
+
 onLoad();
 
 
 // Save Search History Function
 function saveSearchHistory(city) {
+    
+    
     // create DOM element that holds the quick search list
     let quickSearchList = document.querySelector(".collection");
+
     let newSearchTerm = city;
+    // check if newSearchTerm matches any values in the searchHistArray before creating element
+    if (searchHistArray.includes(newSearchTerm) === false) {
+    
     // create DOM <a> element that holds the last search
     let searchHistoryEl = document.createElement("a");
     
@@ -130,19 +138,20 @@ function saveSearchHistory(city) {
     // searchHistoryEl.id = "search-history-el-" + searchHistArray.indexOf(searchHistArray[i]);
     searchHistoryEl.className = "collection-item";
     searchHistoryEl.classList.add("search-hist-el")
-    searchHistoryEl.innerHTML = newSearchTerm;
+    searchHistoryEl.innerHTML = newSearchTerm.toUpperCase();
 
+    console.log(newSearchTerm);
+    
+    searchHistArray.pop(newSearchTerm);
     quickSearchList.appendChild(searchHistoryEl);
+    } 
+    //  end if statement
 } 
 
 
 function deleteSearchHistory(){
-    // for (let i = 0; i < searchHistArray.length; i++){
-    //     quickSearchList.removeChild(searchHistoryEl);
-    // }
     let searchHist = document.querySelector(".collection");
     searchHist.innerHTML = "";
-    // searchHist.remove();
 }
 
 
@@ -215,8 +224,9 @@ document.getElementById('delete').addEventListener("click", function(){
     deleteSearchHistory();
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelector(".collection-item").addEventListener('click', () => {
-        console.log(this);
-    });
-  });
+// // Dont think this is necessary
+// document.addEventListener('DOMContentLoaded', () => {
+//     document.querySelector(".collection-item").addEventListener('click', () => {
+//         console.log(this);
+//     });
+//   });
