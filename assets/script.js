@@ -89,7 +89,7 @@ document.getElementById('current-date').innerHTML = today.toDateString();
 
 
 // set last search term as a data item if it is not already present in the array
-if (searchHistArray.includes(searchTerm) === false) searchHistArray.pop(searchTerm);
+if (searchHistArray.includes(searchTerm) === false) searchHistArray.push(searchTerm);
 // searchHistArray.push(searchTerm);
 localStorage.setItem("last-search", JSON.stringify(searchHistArray));
 
@@ -175,44 +175,6 @@ searchInput.addEventListener("keyup", function(event) {
     }
   });
 
-// look up event listeners for UL of popular search terms.  callback search with parameter of text in list link 
-
-// popular cities list takes the name of the clicked city and enters it as a search term, then calls the search function for that city.
-// document.getElementById('pop-cit-0').addEventListener("click", function(){
-//     let searchTerm = document.getElementById('pop-cit-0').textContent;
-//     document.getElementById('search-input').value = searchTerm;
-//     search(searchTerm);
-//     searchInput.value = "";
-// });
-
-// document.getElementById('pop-cit-1').addEventListener("click", function(){
-//     let searchTerm = document.getElementById('pop-cit-1').textContent;
-//     document.getElementById('search-input').value = searchTerm;
-//     search(searchTerm);
-//     searchInput.value = "";
-// });
-
-// document.getElementById('pop-cit-2').addEventListener("click", function(){
-//     let searchTerm = document.getElementById('pop-cit-2').textContent;
-//     document.getElementById('search-input').value = searchTerm;
-//     search(searchTerm);
-//     searchInput.value = "";
-// });
-
-// document.getElementById('pop-cit-3').addEventListener("click", function(){
-//     let searchTerm = document.getElementById('pop-cit-3').textContent;
-//     document.getElementById('search-input').value = searchTerm;
-//     search(searchTerm);
-//     searchInput.value = "";
-// });
-
-// document.getElementById('pop-cit-4').addEventListener("click", function(){
-//     let searchTerm = document.getElementById('pop-cit-4').textContent;
-//     document.getElementById('search-input').value = searchTerm;
-//     search(searchTerm);
-//     searchInput.value = "";
-// });
-
 document.querySelector(".collection-item").addEventListener("click", function(){
     console.log("HEllo");
     console.log(this);
@@ -223,10 +185,3 @@ document.getElementById('delete').addEventListener("click", function(){
     localStorage.clear();
     deleteSearchHistory();
 });
-
-// // Dont think this is necessary
-// document.addEventListener('DOMContentLoaded', () => {
-//     document.querySelector(".collection-item").addEventListener('click', () => {
-//         console.log(this);
-//     });
-//   });
