@@ -37,7 +37,6 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&units=imp
         .then(function(data){
         document.getElementById('uv').innerHTML = data.current.uvi;
 
-            console.log(document.getElementById('uv').innerHTML);
             // if UVI is good then add class .uvi-good, if moderate add .uv-mod, if bad add .uvi-warn
             if (document.getElementById('uv').innerHTML < 3) {
                 document.getElementById('uv').classList.add("uvi-good");
@@ -88,7 +87,7 @@ let today = new Date();
 document.getElementById('current-date').innerHTML = today.toDateString();
 
 
-// set last search term as a data item if it is not already present in the array
+// set last search term as a data item in search history array if it is not already present in that array
 if (searchHistArray.includes(searchTerm) === false) searchHistArray.push(searchTerm);
 // searchHistArray.push(searchTerm);
 localStorage.setItem("last-search", JSON.stringify(searchHistArray));
@@ -128,7 +127,7 @@ function saveSearchHistory(city) {
     let quickSearchList = document.querySelector(".collection");
 
     let newSearchTerm = city;
-    // check if newSearchTerm matches any values in the searchHistArray before creating element
+    // check if newSearchTerm matches any values in the searchHistArray before creating element and before adding to searchHistArray.
     if (searchHistArray.includes(newSearchTerm) === false) {
     
     // create DOM <a> element that holds the last search
@@ -142,7 +141,8 @@ function saveSearchHistory(city) {
 
     console.log(newSearchTerm);
     
-    searchHistArray.pop(newSearchTerm);
+    // Add New Search Term to searchHistArray
+    searchHistArray.push(newSearchTerm);
     quickSearchList.appendChild(searchHistoryEl);
     } 
     //  end if statement
