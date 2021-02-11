@@ -1,8 +1,6 @@
 let searchHistArray = JSON.parse(localStorage.getItem("last-search")) || [];
 
-
 // Search Function Start
-// create fetch requests that get weather info from open weather and populate them into their respective HTML areas
 function search(searchTerm) {
 
     // fetch current weather conditions for search city
@@ -77,7 +75,6 @@ function search(searchTerm) {
                     }
                 })
 
-
         }).catch(function () {
             document.getElementById('name').innerHTML = "City not found!  Please try again.";
         });
@@ -85,13 +82,6 @@ function search(searchTerm) {
     // display current date
     let today = new Date();
     document.getElementById('current-date').innerHTML = today.toDateString();
-
-
-    // set last search term as a data item in search history array if it is not already present in that array
-    // if (searchHistArray.includes(searchTerm) === false) searchHistArray.push(searchTerm);
-    // searchHistArray.push(searchTerm);
-
-
     // end search function
 }
 
@@ -108,21 +98,16 @@ function onLoad() {
     } else {
         // searchTerm = localStorage.getItem("last-search");
         search(searchHistArray[searchHistArray.length - 1]);
-
         renderHistory();
-
-        // for (let i = 0; i < searchHistArray.length; i++) {
-        //     saveSearchHistory(searchHistArray[i]);
-        // }
     }
 }
 
-
+// load page
 onLoad();
 
+// renders search history cities as DOM elements that can be targeted to search the selected city.
 function renderHistory() {
     // create DOM element that holds the quick search list
-
     let quickSearchList = document.querySelector(".collection");
     quickSearchList.innerHTML = '';
 
@@ -136,15 +121,9 @@ function renderHistory() {
         searchHistoryEl.classList.add("search-hist-el")
         searchHistoryEl.innerHTML = city.toUpperCase();
 
-
         // append new dom element to collection
         quickSearchList.appendChild(searchHistoryEl);
     });
-
-
-
-
-
 }
 
 
@@ -157,7 +136,7 @@ function saveSearchHistory(city) {
     }
 }
 
-
+// Delete search history
 function deleteSearchHistory() {
     let searchHist = document.querySelector(".collection");
     searchHist.innerHTML = "";
@@ -178,15 +157,6 @@ document.getElementById('search-form').addEventListener("submit", function (e) {
     renderHistory();
 });
 
-// submit search on enter
-// let searchInput = document.getElementById("search-input");
-// searchInput.addEventListener("keyup", function (event) {
-//     if (event.keyCode === 13) {
-//         event.preventDefault();
-//         document.getElementById('search-button').click();
-//     }
-// });
-
 // click handler for search history cities
 document.querySelector(".collection").addEventListener("click", function (e) {
     e.preventDefault();
@@ -195,27 +165,6 @@ document.querySelector(".collection").addEventListener("click", function (e) {
     console.log("Hello");
     console.log(this);
 });
-
-// document.querySelector(".collection-item").addEventListener("click", function(){
-// console.log("Hello");
-
-//     console.log(this);
-//     // // let the searchTerm equal the city name that is in the search element
-//     // let searchTerm = document.getElementById(this).innerHTML;
-
-//     // console.log(searchTerm);
-
-//     // // search with selected searchTerm.
-//     // search(searchTerm);
-// });
-
-// reference click handler for previous popular city list
-// document.getElementById('pop-cit-4').addEventListener("click", function(){
-//     let searchTerm = document.getElementById('pop-cit-4').textContent;
-//     document.getElementById('search-input').value = searchTerm;
-//     search(searchTerm);
-//     searchInput.value = "";
-// });
 
 // delete button click handler
 document.getElementById('delete').addEventListener("click", function () {
