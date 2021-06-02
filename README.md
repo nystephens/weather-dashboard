@@ -8,7 +8,7 @@ In the results section there are two rows.  The first is a current forecast card
 Local storage saves the last search and loads that search upon reloading the webpage.  If there is no last search value then the default city on display is Los Angeles.  In the future it would be good to build a feature that gets the users current location and loads that upon opening, but for now LA works for the MVP default.
 
 Here is a link to my deployed application on GitHub pages:
-https://nystphens.github.io/weather-dashboard/
+https://nystephens.github.io/weather-dashboard/
 
 
 Here is a screenshot of the deployed application:
